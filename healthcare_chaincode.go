@@ -79,7 +79,7 @@ func (t *HealthCareChaincode) Query(stub shim.ChaincodeStubInterface, function s
 
 func (t *HealthCareChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 
-    if len(args) != 2 {
+    if len(args) != 3 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 2")
 	}
 
