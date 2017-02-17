@@ -79,10 +79,6 @@ func (t *HealthCareChaincode) Query(stub shim.ChaincodeStubInterface, function s
 
 func (t *HealthCareChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 
-    var err error
-    var username , points string 
-
-
     if len(args) != 2 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 2")
 	}
@@ -127,6 +123,7 @@ func (t *HealthCareChaincode) assign(stub shim.ChaincodeStubInterface, args []st
     toUser = args[1]   
     points = args[2]
 
+    fmt.Printf("fromUser = %s, toUser = %s , points = %s\n", fromUser, toUser,points)
     valAsbytes, err := stub.GetState(toUser)	
 
     if err != nil {
@@ -172,6 +169,7 @@ func (t *HealthCareChaincode) redeem(stub shim.ChaincodeStubInterface, args []st
     toUser = args[1]   
     points = args[2]
 
+  fmt.Printf("fromUser = %s, toUser = %s , points = %s\n", fromUser, toUser,points)
     valAsbytes, err := stub.GetState(toUser)	
 
     if err != nil {
