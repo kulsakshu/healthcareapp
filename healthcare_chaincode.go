@@ -79,13 +79,15 @@ func (t *HealthCareChaincode) Invoke(stub shim.ChaincodeStubInterface, function 
 
   var err error
     var username , points string 
-    if len(args) != 1 {
+    if len(args) != 2 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 2")
 	}
 
     //initialize
     username = args[0]
     points = args[1]
+
+    fmt.Printf("Points :%s\n", points)
         ePoints := eRewardPoint{}
 
     ePoints.Points = points
