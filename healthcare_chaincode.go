@@ -79,6 +79,8 @@ func (t *HealthCareChaincode) Invoke(stub shim.ChaincodeStubInterface, function 
 
   var err error
     var username , points string 
+
+     fmt.Printf("Points :%s\n", args[0])
     if len(args) != 2 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 2")
 	}
