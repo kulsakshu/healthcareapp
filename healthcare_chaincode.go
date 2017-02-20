@@ -36,7 +36,7 @@ func (t *HealthCareChaincode) Init(stub shim.ChaincodeStubInterface, function st
     ePoints.Points = points
     ePoints.User = username
 
-    jsonStr := `{"Points : "`+points +`","User : "`+ username +`"} `
+    jsonStr := `{"Points" : "`+points +`","User" : "`+ username +`"} `
 
     err = stub.PutState(username, []byte(jsonStr))
     if err != nil {
@@ -72,7 +72,7 @@ func (t *HealthCareChaincode) Query(stub shim.ChaincodeStubInterface, function s
     json.Unmarshal(valAsbytes, &ePoints)
 
 
-    jsonResp = `{"Username : "`+ ePoints.User+ `", "Points : "` + ePoints.Points +`"}`
+    jsonResp = `{"User" : "`+ ePoints.User+ `", "Points" : "` + ePoints.Points +`"}`
     fmt.Printf("Query Response:%s\n", jsonResp)
 	return valAsbytes, nil	
 }
@@ -153,7 +153,7 @@ func (t *HealthCareChaincode) assign(stub shim.ChaincodeStubInterface, args []st
 
     ePoints.Points = strconv.Itoa(userPoints)
 
-    jsonStr := `{"Points : "`+ePoints.Points +`","User : "`+ toUser +`"} `
+    jsonStr := `{"Points" : "`+ePoints.Points +`","User" : "`+ toUser +`"} `
 
     err = stub.PutState(toUser, []byte(jsonStr))
 
@@ -204,7 +204,7 @@ func (t *HealthCareChaincode) redeem(stub shim.ChaincodeStubInterface, args []st
 
      ePoints.Points = strconv.Itoa(userPoints)
 
-    jsonStr := `{"Points : "`+ePoints.Points +`","User : "`+ toUser +`"} `
+    jsonStr := `{"Points" : "`+ePoints.Points +`","User" : "`+ toUser +`"} `
 
     err = stub.PutState(toUser, []byte(jsonStr))
 
