@@ -155,7 +155,12 @@ func (t *HealthCareChaincode) assign(stub shim.ChaincodeStubInterface, args []st
 		return nil, err
 	}
 
-    return nil, nil 
+    valAsbytes, err := stub.GetState(toUser)	
+    if err != nil {
+		jsonResp = "{\"Error\":\"Failed to get state for " + toUser + "\"}"
+		return nil, errors.New(jsonResp)
+	}
+    return valAsbytes, nil 
 }
 
 func (t *HealthCareChaincode) redeem(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
