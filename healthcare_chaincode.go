@@ -134,7 +134,7 @@ func (t *HealthCareChaincode) assign(stub shim.ChaincodeStubInterface, args []st
     ePoints := eRewardPoint{}
     json.Unmarshal(valAsbytes, &ePoints)
 
-    return  nil, errors.New("Points :  "+ string(valAsbytes))
+    return  nil, errors.New("Points :  "+ string(ePoints))
 
     assignPoint , err = strconv.Atoi(points)
     if err != nil {
