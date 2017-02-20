@@ -134,14 +134,16 @@ func (t *HealthCareChaincode) assign(stub shim.ChaincodeStubInterface, args []st
     ePoints := eRewardPoint{}
     json.Unmarshal(valAsbytes, &ePoints)
 
-    userPoints , err   = strconv.Atoi(string(ePoints.Points))
-    if err != nil {
-		return nil, errors.New("Invalid points, expecting a integer value for user points ")
-	}
-    assignPoint , err = strconv.Atoi(string(points))
+    assignPoint , err = strconv.Atoi(points)
     if err != nil {
 		return nil, errors.New("Invalid points, expecting a integer value for assign points")
 	}
+
+    userPoints , err   = strconv.Atoi(ePoints.Points)
+    if err != nil {
+		return nil, errors.New("Invalid points, expecting a integer value for user points ")
+	}
+    
 
     userPoints = userPoints + assignPoint
 
