@@ -136,11 +136,11 @@ func (t *HealthCareChaincode) assign(stub shim.ChaincodeStubInterface, args []st
 
     userPoints , err   = strconv.Atoi(string(ePoints.Points))
     if err != nil {
-		return nil, errors.New("Invalid points, expecting a integer value")
+		return nil, errors.New("Invalid points, expecting a integer value for user points ")
 	}
     assignPoint , err = strconv.Atoi(string(points))
     if err != nil {
-		return nil, errors.New("Invalid points, expecting a integer value")
+		return nil, errors.New("Invalid points, expecting a integer value for assign points")
 	}
 
     userPoints = userPoints + assignPoint
@@ -187,11 +187,11 @@ func (t *HealthCareChaincode) redeem(stub shim.ChaincodeStubInterface, args []st
 
     userPoints , err   = strconv.Atoi(string(ePoints.Points))
     if err != nil {
-		return nil, errors.New("Invalid points, expecting a integer value")
+		return nil, errors.New("Invalid points, expecting a integer value for user points")
 	}
     assignPoint , err = strconv.Atoi(string(points))
     if err != nil {
-		return nil, errors.New("Invalid points, expecting a integer value")
+		return nil, errors.New("Invalid points, expecting a integer value for assign points")
 	}
 
     userPoints = userPoints - assignPoint
